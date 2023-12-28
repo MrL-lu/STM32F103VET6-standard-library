@@ -32,13 +32,16 @@ int main(void)
 	// 如果用户想修改系统时钟，可自行编写程序修改
 	
 	/* 用户申明变量	--------------------------------------------------------------------*/
-
+    DHT11_Data_TypeDef DHT11_Data;
+    
 	/* 用户初始化开始 ------------------------------------------------------------------*/
 	HSE_SetSysClock(RCC_PLLMul_9);  //配置系统时钟为72MHz
 	SysTick_Init();	//初始化系统滴答定时器 SysTick
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	Usart_Config();
 	BSP_LED_Config();	//LED初始化函数
+    DHT11_Init();//DHT11 初始化函数
+    
     Usart_SendString(DEBUG_USARTX,"程序初始化完毕/r/n");
 	/* 主循环程序开始 ------------------------------------------------------------------*/
 	while(1)
@@ -48,6 +51,16 @@ int main(void)
 		LED_Red_TOGGLE;
 		SysTick_Delay_ms(1000);	//延时1s
 		
+        if(DHT11_Read_TempAndHumidity(&DHT11_Data) == SUCCESS)
+        {
+            printf("\r\n读取DHT11成功!\r\n\r\n湿度为%d.%d ％RH ，温度为 %d.%d℃ \r\n",\
+			DHT11_Data.DHT11_humi_int,DHT11_Data.DHT11_humi_deci,DHT11_Data.DHT11_temp_int,DHT11_Data.DHT11_temp_deci);
+        }
+        else
+        {
+            printf("Read DHT11 ERROR!\r\n");
+        }
+        
 	}//end of while 主循环结束
 	
 }//end of main

@@ -28,6 +28,7 @@
 #include "./SysTick/systick.h"  //引用systick系统时钟配置头文件
 #include "./USART/usart.h"  //引用usart串口配置头文件
 #include "./LED/led.h"  //引用LED配置头文件
+#include "./DHT11/dht11.h"  //引用温湿度传感器DHT11配置头文件
 
 /* 版本更新信息 ----------------------------------------------------------------*/
 

@@ -560,6 +560,11 @@
               <FileType>1</FileType>
               <FilePath>..\3.BSP\USART\usart.c</FilePath>
             </File>
+            <File>
+              <FileName>dht11.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3.BSP\DHT11\dht11.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
