@@ -555,6 +555,11 @@
               <FileType>1</FileType>
               <FilePath>..\3.BSP\LED\led.c</FilePath>
             </File>
+            <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3.BSP\USART\usart.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

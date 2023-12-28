@@ -26,6 +26,7 @@
 
 #include "./rcc/rcc_clkconfig.h"  //引用RCC时钟配置头文件
 #include "./SysTick/systick.h"  //引用systick系统时钟配置头文件
+#include "./USART/usart.h"  //引用usart串口配置头文件
 #include "./LED/led.h"  //引用LED配置头文件
 
 /* 版本更新信息 ----------------------------------------------------------------*/

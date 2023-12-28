@@ -37,8 +37,9 @@ int main(void)
 	HSE_SetSysClock(RCC_PLLMul_9);  //配置系统时钟为72MHz
 	SysTick_Init();	//初始化系统滴答定时器 SysTick
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-	
+	Usart_Config();
 	BSP_LED_Config();	//LED初始化函数
+    Usart_SendString(DEBUG_USARTX,"程序初始化完毕/r/n");
 	/* 主循环程序开始 ------------------------------------------------------------------*/
 	while(1)
 	{
