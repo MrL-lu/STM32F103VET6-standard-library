@@ -25,7 +25,6 @@
 #include "stm32f10x_it.h"
 #include "main.h"
 
-/* SysTick ------------------------------------------------------------------*/ 
 
 
 /** @addtogroup STM32F10x_StdPeriph_Template
@@ -136,8 +135,11 @@ void PendSV_Handler(void)
   * @param  None
   * @retval None
   */
+/* SysTick ------------------------------------------------------------------*/ 
+extern void TimingDelay_Decrement(void);	//SysTick—” ±≥Ã–Ú
 void SysTick_Handler(void)
 {
+    TimingDelay_Decrement();//systick
 }
 
 /******************************************************************************/

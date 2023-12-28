@@ -33,12 +33,19 @@ int main(void)
 	
 	/* 用户申明变量	--------------------------------------------------------------------*/
 
-    
 	/* 用户初始化开始 ------------------------------------------------------------------*/
-
+	HSE_SetSysClock(RCC_PLLMul_9);  //配置系统时钟为72MHz
+	SysTick_Init();	//初始化系统滴答定时器 SysTick
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	
+	BSP_LED_Config();	//LED初始化函数
 	/* 主循环程序开始 ------------------------------------------------------------------*/
 	while(1)
 	{
+		LED_Red_TOGGLE;
+		SysTick_Delay_ms(1000);	//延时1s
+		LED_Red_TOGGLE;
+		SysTick_Delay_ms(1000);	//延时1s
 		
 	}//end of while 主循环结束
 	

@@ -539,6 +539,23 @@
         </Group>
         <Group>
           <GroupName>BSP</GroupName>
+          <Files>
+            <File>
+              <FileName>rcc_clkconfig.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3.BSP\RCC\rcc_clkconfig.c</FilePath>
+            </File>
+            <File>
+              <FileName>systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3.BSP\SysTick\systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3.BSP\LED\led.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Doc</GroupName>
