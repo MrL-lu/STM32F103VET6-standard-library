@@ -22,6 +22,9 @@
 #include "main.h"
 
 /* 定义全局变量 ------------------------------------------------------------------*/
+/* ADC1转换的电压值通过MDA方式传到sram*/
+extern __IO u16 ADC_ConvertedValue;
+uint16_t chip_temp;
 
 /* 程序开始 ----------------------------------------------------------------------*/
 int main(void)
@@ -42,6 +45,8 @@ int main(void)
 	BSP_LED_Config();	//LED初始化函数
     DHT11_Init();//DHT11 初始化函数
     
+    Temp_ADC1_Init();
+    
     Usart_SendString(DEBUG_USARTX,"程序初始化完毕/r/n");
 	/* 主循环程序开始 ------------------------------------------------------------------*/
 	while(1)
@@ -51,6 +56,9 @@ int main(void)
 		LED_Red_TOGGLE;
 		SysTick_Delay_ms(1000);	//延时1s
 		
+        chip_temp = (1.43- ADC_ConvertedValue*3.3/4096)*1000 / 4.3+ 25;
+        printf("\r\n The IC current tem= %3d ℃\r\n", chip_temp);
+        
         if(DHT11_Read_TempAndHumidity(&DHT11_Data) == SUCCESS)
         {
             printf("\r\n读取DHT11成功!\r\n\r\n湿度为%d.%d ％RH ，温度为 %d.%d℃ \r\n",\
