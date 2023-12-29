@@ -16,7 +16,7 @@
 //  * @file     （程序名）	  	main.h
 //  * @author （程序作者）		Lu
 //  * @version（程序版本）		V1.0
-//  * @date   （修改日期）		2023-11-23
+//  * @date   （修改日期）		2023-12-29
 //  * @brief  （功能简介）		STM32F103VET6固件库模板
 //  * @parameter  （参数）		无
 //  * @return   （返回值）		无
@@ -47,36 +47,36 @@
 ///* END OF FILE ------------------------------------------------------------------*/
 
 
-/**
- * @brief		：主函数
- * @param		：参数说明
- * @arg		：参数里面可选择参量列举
- * @note		：注释
- * @retval	：返回值说明
- * @doc		：无
- */
+///**
+// * @brief	：主函数
+// * @param	：参数说明
+// * @arg		：参数里面可选择参量列举
+// * @note	：注释
+// * @retval	：返回值说明
+// * @doc		：无
+// */
 
 
-/**
-  * @brief	：对函数简要描述
-  * @param	：参数说明，以’:’作为参数结束标志
-  * @arg		：参数里面可选择参量列举，对于可数情况可进行参量列举，同样以’:’作为参数结束标志；
-  * @note	：注释，配合brief一起使用可以达到很好的注释效果；
-  * @retval	：返回值说明。
-  * @doc		：无
-  */
+///**
+//  * @brief	：对函数简要描述
+//  * @param	：参数说明，以’:’作为参数结束标志
+//  * @arg	：参数里面可选择参量列举，对于可数情况可进行参量列举，同样以’:’作为参数结束标志；
+//  * @note	：注释，配合brief一起使用可以达到很好的注释效果；
+//  * @retval	：返回值说明。
+//  * @doc	：无
+//  */
 
-/**
- * @brief		：主函数
- * @param		：无
- * @retval	：无
- * @doc		：无
- */
+///**
+// * @brief	：主函数
+// * @param	：无
+// * @retval	：无
+// * @doc		：无
+// */
 
-/**
- * @SARMCM3.DLL：-REMAP
- * @SARMCM3.DLL：-REMAP
- * @DARMSTM.DLL：-pSTM32F103VE
- * @TARMSTM.DLL：-pSTM32F103VE
- * PORTA.0：PA0
- */
+///**
+// * @SARMCM3.DLL：-REMAP
+// * @SARMCM3.DLL：-REMAP
+// * @DARMSTM.DLL：-pSTM32F103VE
+// * @TARMSTM.DLL：-pSTM32F103VE
+// * PORTA.0：PA0
+// */

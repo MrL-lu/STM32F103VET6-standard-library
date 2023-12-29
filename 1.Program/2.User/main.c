@@ -54,8 +54,6 @@ int main(void)
 	{
 		LED_Red_TOGGLE;
 		SysTick_Delay_ms(1000);	//延时1s
-		LED_Red_TOGGLE;
-		SysTick_Delay_ms(1000);	//延时1s
         chip_temp = (1.43- ADC_ConvertedValue*3.3/4096)*1000 / 4.3+ 25;
         printf("\r\n The IC current tem= %3d ℃\r\n", chip_temp);
         printf("\r\n芯片的唯一ID为: 0x%08X-%08X-%08X\r\n",uniqueID[0],uniqueID[1],uniqueID[2]);

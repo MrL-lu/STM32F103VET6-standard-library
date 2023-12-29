@@ -31,6 +31,7 @@
 /* º¯ÊýÉùÃ÷ --------------------------------------------------------------------*/
 void Get_ChipID(uint32_t *chipid);
 void Temp_ADC1_Init(void);
+uint16_t CHIP_Temp_Count(uint16_t chip_temp);
 //void Get_ChipFlashSize(uint16_t FlashSize);
 
 #endif  /*  __CHIP_H */

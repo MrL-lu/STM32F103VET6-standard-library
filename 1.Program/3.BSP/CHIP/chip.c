@@ -93,6 +93,18 @@ void Temp_ADC1_Init(void)
 }
 
 
+/*
+ * 函数名：CHIP_Temp_Count
+ * 描述  ：无
+ * 输入  ：无
+ * 输出  ：芯片温度
+ */
+uint16_t CHIP_Temp_Count(uint16_t chip_temp)
+{
+    chip_temp = (1.43- ADC_ConvertedValue*3.3/4096)*1000 / 4.3+ 25;
+    return chip_temp;
+}
+
 
 /*
  * 函数名：Get_ChipID
