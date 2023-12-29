@@ -2,7 +2,7 @@
 #include "./USART/usart.h"  //引用usart串口配置头文件
 
 /* 定义全局变量 ------------------------------------------------------------------*/
-
+uint8_t SendBuff[SENDBUFF_SIZE];
 
 /* 程序开始 ----------------------------------------------------------------------*/
 /**
@@ -97,6 +97,7 @@ void Usart_SendString(USART_TypeDef *pUSARTX,char *data)
     uint32_t i=0;
     do{
         Usart_SendByte(pUSARTX,*(data+i));
+        i++;
     }while(*(data+i) != '\0');
     while(USART_GetFlagStatus(pUSARTX,USART_FLAG_TC) == RESET);    //等待发送完成
 }
@@ -163,6 +164,49 @@ void Usart_SendWord(USART_TypeDef * pUSARTX, uint32_t data)
         while (USART_GetFlagStatus(pUSARTX, USART_FLAG_TXE) == RESET);
     }
 }
+
+/**
+  * @brief  USARTx TX DMA 配置，内存到外设(USART1->DR)
+  * @param  无
+  * @retval 无
+  */
+void USARTx_DMA_Config(void)
+{
+    DMA_InitTypeDef DMA_InitStructure;
+    // 开启DMA时钟
+    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
+    // 设置DMA源地址：串口数据寄存器地址*/
+    DMA_InitStructure.DMA_PeripheralBaseAddr = USART_DR_ADDRESS;
+    // 内存地址(要传输的变量的指针)
+    DMA_InitStructure.DMA_MemoryBaseAddr = (u32)SendBuff;
+    // 方向：从内存到外设	
+    DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralDST;
+    // 传输大小	
+    DMA_InitStructure.DMA_BufferSize = SENDBUFF_SIZE;
+    // 外设地址不增	    
+    DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+    // 内存地址自增
+    DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
+    // 外设数据单位	
+    DMA_InitStructure.DMA_PeripheralDataSize = 
+    DMA_PeripheralDataSize_Byte;
+    // 内存数据单位
+    DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;	 
+    // DMA模式，一次或者循环模式
+    DMA_InitStructure.DMA_Mode = DMA_Mode_Normal ;
+    //DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;	
+    // 优先级：中	
+    DMA_InitStructure.DMA_Priority = DMA_Priority_Medium; 
+    // 禁止内存到内存的传输
+    DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
+    // 配置DMA通道		   
+    DMA_Init(USART_TX_DMA_CHANNEL, &DMA_InitStructure);		
+    // 使能DMA
+    DMA_Cmd (USART_TX_DMA_CHANNEL,ENABLE);
+}
+
+
+
 
 
 //重定向c库函数printf到串口，重定向后可使用printf函数

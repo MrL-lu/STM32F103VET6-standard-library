@@ -40,6 +40,13 @@
 #define  DEBUG_USART_IRQ                USART1_IRQn
 #define  DEBUG_USART_IRQHandler         USART1_IRQHandler
 
+// 串口对应的DMA请求通道
+#define  USART_TX_DMA_CHANNEL     DMA1_Channel4
+// 外设寄存器地址
+#define  USART_DR_ADDRESS        (USART1_BASE+0x04)
+// 一次发送的数据量
+#define  SENDBUFF_SIZE            5000
+
 /* 函数声明 --------------------------------------------------------------------*/
 void Usart_Config(void);//USART GPIO 配置,工作参数配置
 void Usart_SendByte(USART_TypeDef *pUSARTX,uint8_t data);//USART 发送一个字符
@@ -47,6 +54,7 @@ void Usart_SendString(USART_TypeDef *pUSARTX,char *data);//USART 发送字符串
 void Usart_SendArray( USART_TypeDef *pUSARTX, uint8_t *array, uint16_t num);//USART 发送8位数组
 void Usart_SendHalfWord( USART_TypeDef * pUSARTX, uint16_t data);//USART 发送一个16位数
 void Usart_SendWord(USART_TypeDef * pUSARTX, uint32_t data);//USART 发送一个32位数
+void USARTx_DMA_Config(void);//USARTx TX DMA 配置，内存到外设(USART1->DR)
 
 #endif  /*  __USART_H */
 

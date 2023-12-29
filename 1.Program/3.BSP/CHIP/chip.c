@@ -107,4 +107,15 @@ void Get_ChipID(uint32_t *chipid)
 	chipid[2] = *(__IO u32 *)(0X1FFFF7E8); // 低字节
 }
 
+///*
+// * 函数名：Get_ChipFlashSize
+// * 描述  ：获取芯片Flash容量大小
+// * 输入  ：无
+// * 输出  ：无
+// */
+//void Get_ChipFlashSize(uint16_t FlashSize)
+//{
+//    FlashSize = *(__IO u16 *)(0X1FFFF7E0);
+//}
+
 /* END OF FILE ------------------------------------------------------------------*/
