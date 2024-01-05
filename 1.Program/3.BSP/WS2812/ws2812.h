@@ -48,6 +48,8 @@ void WS2812_Reset(void);	//WS2812 RESET信号
 void WS2812_SetColor(uint32_t RGB_Data);	//WS2812 颜色设置函数
 void WS2812_Display(uint8_t LED_Num);	//WS2812 显示函数
 void WS2812_Display_Color(uint8_t LED_Num,uint32_t RGB_Data);
+void WS2812_Set_LED_Color(uint8_t LED_Num,uint32_t RGB_Data);
+
 
 #endif  /*  __BSP_WS2812_H */
 

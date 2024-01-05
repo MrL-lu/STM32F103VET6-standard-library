@@ -69,7 +69,6 @@ void WS2812_Config(uint16_t WS2812_Byte)
 	
 }
 
-
 /**
  * @brief  ：WS2812 RESET信号 低电平>280us
  * @param  ：无
@@ -92,9 +91,9 @@ void  WS2812_Reset(void)
 void WS2812_SetColor(uint32_t RGB_Data)
 {
 	uint8_t R,G,B,i,j;	
-	R = (uint8_t)(RGB_Data>>16);
-	G = (uint8_t)((RGB_Data&0x00ff00)>>8);
-	B = (uint8_t)(RGB_Data&0x0000ff);
+	R = (uint8_t)(RGB_Data>>16);//取出Red的数值
+	G = (uint8_t)((RGB_Data&0x00ff00)>>8);//取出Green的数值
+	B = (uint8_t)(RGB_Data&0x0000ff);//取出Blue的数值
 	RGB_Data = (G<<16) | (R<<8) | B;
 	for(j=0;j<WS2812_LED_Number;j++)
 	{
@@ -128,7 +127,7 @@ void  WS2812_Display(uint8_t LED_Num)
 	/*清除DMA标志位*/
 	DMA_ClearFlag(WS2812_DMA_Flag);
 	TIM_Cmd(WS2812_TIM,DISABLE);
-	WS2812_Reset();
+	WS2812_Reset();//发送WS2812的复位信号，如果没有，会导致颜色传输错码
 }
 
 
@@ -143,9 +142,9 @@ void  WS2812_Display(uint8_t LED_Num)
 void WS2812_Display_Color(uint8_t LED_Num,uint32_t RGB_Data)
 {
 	uint8_t R,G,B,i,j;	
-	R = (uint8_t)(RGB_Data>>16);
-	G = (uint8_t)((RGB_Data&0x00ff00)>>8);
-	B = (uint8_t)(RGB_Data&0x0000ff);
+	R = (uint8_t)(RGB_Data>>16);//取出Red的数值
+	G = (uint8_t)((RGB_Data&0x00ff00)>>8);//取出Green的数值
+	B = (uint8_t)(RGB_Data&0x0000ff);//取出Blue的数值
 	RGB_Data = (G<<16) | (R<<8) | B;
 	for(j=0;j<LED_Num;j++)
 	{
@@ -156,10 +155,33 @@ void WS2812_Display_Color(uint8_t LED_Num,uint32_t RGB_Data)
 		}
 	}
 	WS2812_LED_Buffer[j*24+i+1] = 0;
-	
 	WS2812_Display(LED_Num);
-
 }
+
+/**
+ * @brief  ：WS2812 颜色设置函数-设置指定的LED为特定颜色
+ * @param  ：LED_Num ：指定的WS2812
+ * @param  ：RGB_Data：RGB颜色 例如：0xffffff（白光）
+ * @retval ：无
+ * @doc    ：无
+ */
+void WS2812_Set_LED_Color(uint8_t LED_Num,uint32_t RGB_Data)
+{
+    uint8_t R,G,B,i,j;
+    R = (uint8_t)(RGB_Data>>16);//取出Red的数值
+	G = (uint8_t)((RGB_Data&0x00ff00)>>8);//取出Green的数值
+	B = (uint8_t)(RGB_Data&0x0000ff);//取出Blue的数值
+	RGB_Data = (G<<16) | (R<<8) | B;
+    for(i=0;i<24;i++)
+	{
+		/*因为数据发送的顺序是GRB，高位先发，所以从高位开始判断，判断后比较值先放入缓存数组*/
+		WS2812_LED_Buffer[(LED_Num-1)*24+i] = ((RGB_Data << i) & 0x800000) ? WS2812_T1H : WS2812_T0H;
+	}
+    WS2812_LED_Buffer[j*24+i+1] = 0;
+    WS2812_Display(LED_Num);
+}
+
+
 
 /* END OF FILE ------------------------------------------------------------------*/
 

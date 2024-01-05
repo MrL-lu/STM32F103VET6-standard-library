@@ -70,6 +70,10 @@ int main(void)
             printf("Read DHT11 ERROR!\r\n");
         }
         WS2812_Display_Color(8,0xf11f23);
+        SysTick_Delay_ms(1000);	//延时1s
+        WS2812_Set_LED_Color(1,0xffffff);
+        
+        
 	}//end of while 主循环结束
 	
 }//end of main
