@@ -49,6 +49,8 @@ int main(void)
     Temp_ADC1_Init();
     Usart_SendString(DEBUG_USARTX,"程序初始化完毕\r\n");
     
+    WS2812_Config(WS2812_Sendspeed);//WS2812 配置函数
+    
 	/* 主循环程序开始 ------------------------------------------------------------------*/
 	while(1)
 	{
@@ -67,7 +69,7 @@ int main(void)
         {
             printf("Read DHT11 ERROR!\r\n");
         }
-        
+        WS2812_Display_Color(8,0xf11f23);
 	}//end of while 主循环结束
 	
 }//end of main
