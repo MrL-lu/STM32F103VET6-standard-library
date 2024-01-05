@@ -16,7 +16,7 @@
 //  * @file     （程序名）	  	main.h
 //  * @author （程序作者）		Lu
 //  * @version（程序版本）		V1.0
-//  * @date   （修改日期）		2023-12-29
+//  * @date   （修改日期）		2024-1-5
 //  * @brief  （功能简介）		STM32F103VET6固件库模板
 //  * @parameter  （参数）		无
 //  * @return   （返回值）		无
