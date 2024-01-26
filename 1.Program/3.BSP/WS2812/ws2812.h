@@ -26,21 +26,27 @@
 #include "main.h"
 
 /* 宏定义 ----------------------------------------------------------------------*/
-#define			WS2812_LED_Number			8							/* WS2812 灯珠的数量 */
-#define			WS2812_Data_Bit				24
-#define			WS2812_T0H					30							/* 0编码高电平时间占1/3 */
-#define			WS2812_T1H					60							/* 1编码高电平时间占2/3 */
-#define			WS2812_Sendspeed			800							/* WS2812发送接收数据速度800Kbps */
+#define			WS2812_LED_Number			    8							/* WS2812 灯珠的数量 */
+#define			WS2812_Data_Bit				    24
+#define			WS2812_T0H					    30							/* 0编码高电平时间占1/3 */
+#define			WS2812_T1H					    60							/* 1编码高电平时间占2/3 */
+#define			WS2812_Sendspeed			    800							/* WS2812发送接收数据速度800Kbps */
 
-#define			WS2812_GPIO_PORT			GPIOB						/* GPIO端口 */
-#define			WS2812_GPIO_CLK				RCC_APB2Periph_GPIOB		/* GPIO端口时钟 */
-#define			WS2812_GPIO_PIN				GPIO_Pin_0					/* 连接到SCL时钟线的GPIO */
+#define			WS2812_GPIO_PORT			    GPIOB						/* GPIO端口 */
+#define			WS2812_GPIO_CLK				    RCC_APB2Periph_GPIOB		/* GPIO端口时钟 */
+#define			WS2812_GPIO_PIN				    GPIO_Pin_0					/* 连接到SCL时钟线的GPIO */
 
-#define			WS2812_TIM					TIM3						/* WS2812 对应的定时器 */
-#define			WS2812_TIM_DMA				TIM_DMA_CC3					/* WS2812 对应的定时器对应的DMA通道 */
-#define			WS2812_DMA_Addr				(TIM3->CCR3)				/* WS2812 DMA传输的目的地址 */
-#define			WS2812_DMA_Channel			DMA1_Channel2				/* WS2812 对应的DMA通道 */
-#define			WS2812_DMA_Flag				DMA1_FLAG_TC2				/* WS2812 对应的DMA通道传输完成标志位 */
+#define			WS2812_TIM_CLK				    RCC_APB1Periph_TIM3			/* WS2812 对应的TIM时钟 */
+#define			WS2812_TIM					    TIM3						/* WS2812 对应的定时器 */
+#define			WS2812_TIM_DMA				    TIM_DMA_CC3					/* WS2812 对应的定时器对应的DMA通道 */
+#define			WS2812_DMA_Addr				    (WS2812_TIM->CCR3)			/* WS2812 DMA传输的目的地址 */
+#define			WS2812_DMA_Channel			    DMA1_Channel2				/* WS2812 对应的DMA通道 */
+#define			WS2812_DMA_Flag				    DMA1_FLAG_TC2				/* WS2812 对应的DMA通道传输完成标志位 */
+
+#define			WS2812_TIM_OCXInit				TIM_OC3Init				    /* WS2812 TIM比较输出初始化 */
+#define			WS2812_TIM_OCXPreloadConfig		TIM_OC3PreloadConfig		/* WS2812 TIM比较输出预装载寄存器 */
+
+
 
 /* 函数声明 --------------------------------------------------------------------*/
 void WS2812_Config(uint16_t WS2812_Byte);	//WS2812 配置函数

@@ -580,6 +580,11 @@
               <FileType>1</FileType>
               <FilePath>..\3.BSP\WS2812\ws2812.c</FilePath>
             </File>
+            <File>
+              <FileName>beep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\3.BSP\Beep\beep.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

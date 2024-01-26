@@ -45,8 +45,8 @@ void WS2812_Config(uint16_t WS2812_Byte)
 //	WS2812_TIM_OCInitStructure.TIM_Pulse			= 	0;	//待装入捕获比较寄存器的脉冲值(此程序不用加初值)
 	WS2812_TIM_OCInitStructure.TIM_OCPolarity		=	TIM_OCPolarity_High;	//输出极性:TIM输出比较极性高
 	
-	TIM_OC3Init(WS2812_TIM,&WS2812_TIM_OCInitStructure);	//初始化参数
-	TIM_OC3PreloadConfig(WS2812_TIM,TIM_OCPreload_Enable);	//使能TIM3在CCR3上的预装载寄存器
+	WS2812_TIM_OCXInit(WS2812_TIM,&WS2812_TIM_OCInitStructure);	//初始化参数
+	WS2812_TIM_OCXPreloadConfig(WS2812_TIM,TIM_OCPreload_Enable);	//使能TIM3在CCR3上的预装载寄存器
 	
 	TIM_Cmd(WS2812_TIM,DISABLE);	//失能TIM3 防止出现错误信号波形
 	
