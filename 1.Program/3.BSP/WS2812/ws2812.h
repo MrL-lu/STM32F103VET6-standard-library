@@ -25,6 +25,17 @@
 
 #include "main.h"
 
+typedef struct
+{
+    uint8_t R;      //WS2812的Red值
+    uint8_t G;      //WS2812的Green值
+    uint8_t B;      //WS2812的Blue值
+    float h;        //WS2812的色调值
+    float s;        //WS2812的饱和度值
+    float v;        //WS2812的亮度值
+} WS2812_Data_TypeDef;
+
+
 /* 宏定义 ----------------------------------------------------------------------*/
 #define			WS2812_LED_Number			    8							/* WS2812 灯珠的数量 */
 #define			WS2812_Data_Bit				    24
@@ -56,7 +67,7 @@ void WS2812_Display(uint8_t LED_Num);	//WS2812 显示函数
 void WS2812_Display_Color(uint8_t LED_Num,uint32_t RGB_Data);
 void WS2812_Set_LED_Color(uint8_t LED_Num,uint32_t RGB_Data);
 
-
+void WS2812_BreathingLight(uint16_t LED_Num,uint32_t RGB_Data);
 #endif  /*  __BSP_WS2812_H */
 
 /* END OF FILE ------------------------------------------------------------------*/
