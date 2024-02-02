@@ -25,15 +25,15 @@
 
 #include "main.h"
 
-typedef struct
-{
-    uint8_t R;      //WS2812的Red值
-    uint8_t G;      //WS2812的Green值
-    uint8_t B;      //WS2812的Blue值
-    float h;        //WS2812的色调值
-    float s;        //WS2812的饱和度值
-    float v;        //WS2812的亮度值
-} WS2812_Data_TypeDef;
+//typedef struct
+//{
+//    uint8_t R;      //WS2812的Red值，取值为：0~255
+//    uint8_t G;      //WS2812的Green值，取值为：0~255
+//    uint8_t B;      //WS2812的Blue值，取值为：0~255
+//    float h;        //WS2812的色调值，取值为：0~360°
+//    float s;        //WS2812的饱和度值，取值为：0~1.0
+//    float v;        //WS2812的亮度值，取值为：0~1.0
+//} WS2812_Data_TypeDef;
 
 
 /* 宏定义 ----------------------------------------------------------------------*/
@@ -56,6 +56,9 @@ typedef struct
 
 #define			WS2812_TIM_OCXInit				TIM_OC3Init				    /* WS2812 TIM比较输出初始化 */
 #define			WS2812_TIM_OCXPreloadConfig		TIM_OC3PreloadConfig		/* WS2812 TIM比较输出预装载寄存器 */
+
+
+#define         WS2812Breath_Flag               1                           /* WS2812 呼吸曲线宏定义 */      
 
 
 
